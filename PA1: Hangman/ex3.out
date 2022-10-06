@@ -1,0 +1,78 @@
+Welcome to the Hangman Game!
+Please choose a size of a word to be guessed [3 - 12, default any size]:
+The word size is set to 7.
+Please choose a number of lives [1 - 10, default 5]:
+You have 5 lives.
+Letters chosen: 
+__  -  __  __  __  __  __   lives: 5 OOOOO
+Please choose a new letter >
+You guessed wrong, you lost one life.
+Letters chosen: E
+__  -  __  __  __  __  __   lives: 4 XOOOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E, T
+T  -  __  __  __  __  T   lives: 4 XOOOO
+Please choose a new letter >
+Please choose a new letter >
+Please choose a new letter >
+Please choose a new letter >
+Please choose a new letter >
+You guessed wrong, you lost one life.
+Letters chosen: E, T, A
+T  -  __  __  __  __  T   lives: 3 XXOOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E, T, A, S
+T  -  S  __  __  __  T   lives: 3 XXOOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E, T, A, S, H
+T  -  S  H  __  __  T   lives: 3 XXOOO
+Please choose a new letter >
+You guessed wrong, you lost one life.
+Letters chosen: E, T, A, S, H, O
+T  -  S  H  __  __  T   lives: 2 XXXOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E, T, A, S, H, O, I
+T  -  S  H  I  __  T   lives: 2 XXXOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E, T, A, S, H, O, I, R
+T  -  S  H  I  R  T   lives: 2 XXXOO
+Congratulations!!! You won! The word is T-SHIRT!
+Would you like to play again [Y/N]?
+Please choose a size of a word to be guessed [3 - 12, default any size]:
+The word size is set to 11.
+Please choose a number of lives [1 - 10, default 5]:
+You have 5 lives.
+Letters chosen: 
+__  __  __  __  -  __  __  __  __  __  __   lives: 5 OOOOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E
+__  E  __  __  -  E  __  __  E  E  __   lives: 5 OOOOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E, T
+__  E  __  __  -  E  __  T  E  E  __   lives: 5 OOOOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E, T, S
+S  E  __  __  -  E  S  T  E  E  __   lives: 5 OOOOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E, T, S, M
+S  E  __  __  -  E  S  T  E  E  M   lives: 5 OOOOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E, T, S, M, L
+S  E  L  __  -  E  S  T  E  E  M   lives: 5 OOOOO
+Please choose a new letter >
+You guessed right!
+Letters chosen: E, T, S, M, L, F
+S  E  L  F  -  E  S  T  E  E  M   lives: 5 OOOOO
+Congratulations!!! You won! The word is SELF-ESTEEM!
+Would you like to play again [Y/N]?
+Goodbye!

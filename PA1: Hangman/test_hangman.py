@@ -5,9 +5,13 @@
 # output: possible assertion errors
 
 
+from ast import Assert
+from secrets import choice
 import hangman
 import sys
 import io
+
+import string
 
 dictionary_file = 'dictionary-short.txt'
 
@@ -26,7 +30,7 @@ if __name__ == '__main__':
                      11: ['self-esteem'],
                      12: ['unemployment']}
     dictionary = hangman.import_dictionary(dictionary_file)
-    print(dictionary)
+    # print(dictionary)
     assert dictionary == dict_standard
 
     # test get_game_options()
@@ -41,6 +45,35 @@ if __name__ == '__main__':
     assert lives == 4
     assert output == output_standard
 
-    # test guess_letter(letters_guessed)
+    # test guess_letter()
+    guessed = []
+    word = choice(dictionary[size]).upper()
+    print(f'The word chosen is {word}')
+    inputs = ['1', '%', 'AA', 'A']
+    for i in inputs:
+        hangman.input = lambda x: i
+    stdout = sys.stdout
+    sys.stdout = io.StringIO()   # redirect stdout
+    letter = hangman.guess_letter(guessed)
+    output = sys.stdout.getvalue()
+    sys.stdout = stdout          # restore stdout
+    print(letter)
+    print(guessed)
+    assert letter == "A"
+    # assert guessed == ["A"]
+
+    def generate_letter():
+        pass
+
+    # test EOGcheck() # end of game check
+    stdout = sys.stdout
+    sys.stdout = io.StringIO()
+    End = hangman.EOGcheck(word, lives, guessed)
+
+    output = sys.stdout.getvalue()
+    sys.stdout = stdout
+    assert End == False or True
+
+    # test PrintInterface() # print interface test
 
     print('Everything looks good! No assertion errors!')

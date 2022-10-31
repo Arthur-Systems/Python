@@ -4,8 +4,6 @@
 # input: file 'dictionary_short.txt'
 # output: possible assertion errors
 
-
-from ast import Assert
 from secrets import choice
 import hangman
 import sys
@@ -34,6 +32,7 @@ if __name__ == '__main__':
     assert dictionary == dict_standard
 
     # test get_game_options()
+
     output_standard = 'The word size is set to 4.\nYou have 4 lives.\n'
     hangman.input = lambda x: '4'  # redirect input
     stdout = sys.stdout
@@ -45,35 +44,56 @@ if __name__ == '__main__':
     assert lives == 4
     assert output == output_standard
 
-    # test guess_letter()
-    guessed = []
     word = choice(dictionary[size]).upper()
     print(f'The word chosen is {word}')
-    inputs = ['1', '%', 'AA', 'A']
+    guessed_letters = []
+
+    # test PrintInterface()
+    hangman.lives_remaining = lives
+    hangman.PrintInterface(word, lives, guessed_letters)
+
+    # test guess_letter()
+    # Test all incorrect inputs then the correct letter
+    inputs = ['1', '%', 'GF', 'A']
     for i in inputs:
         hangman.input = lambda x: i
     stdout = sys.stdout
     sys.stdout = io.StringIO()   # redirect stdout
-    letter = hangman.guess_letter(guessed)
+    letter = hangman.guess_letter(guessed_letters)
     output = sys.stdout.getvalue()
     sys.stdout = stdout          # restore stdout
-    print(letter)
-    print(guessed)
     assert letter == "A"
-    # assert guessed == ["A"]
+    guessed_letters.append(letter)
+    inputs = ['V', 'E', 'r', 'd', "C"]  # letters to be inputted
+    i = 0
 
-    def generate_letter():
-        pass
+    while True:
+        if letter in word:
+            print("\nYou guessed right!")
+        else:
+            print("\nYou guessed wrong, you lost one life.")
+            lives -= 1
 
-    # test EOGcheck() # end of game check
-    stdout = sys.stdout
-    sys.stdout = io.StringIO()
-    End = hangman.EOGcheck(word, lives, guessed)
+        hangman.input = lambda x: inputs[i]
+        # test PrintInterface() # print interface test
+        letter = hangman.guess_letter(guessed_letters)
 
-    output = sys.stdout.getvalue()
-    sys.stdout = stdout
-    assert End == False or True
+        guessed_letters.append(letter)
+        hangman.PrintInterface(word, lives, guessed_letters)
 
-    # test PrintInterface() # print interface test
+        assert letter == inputs[i].upper()
+
+        # test EOGcheck() # end of game check
+        stdout = sys.stdout
+        sys.stdout = io.StringIO()
+        End = hangman.EOGcheck(word, lives, guessed_letters)
+        output = sys.stdout.getvalue()
+        sys.stdout = stdout
+        if End != True:
+            break
+        else:
+            i += 1
+            continue
+    assert End == False
 
     print('Everything looks good! No assertion errors!')

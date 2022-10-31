@@ -7,52 +7,37 @@ Letters chosen:
 __  __  __  __  __   lives: 6 OOOOOO
 Please choose a new letter >
 
-You guessed right!
+You guessed wrong, you lost one life.
 Letters chosen: E
-__  __  E  __  __   lives: 6 OOOOOO
+__  __  __  __  __   lives: 5 XOOOOO
 Please choose a new letter >
 
 You guessed wrong, you lost one life.
 Letters chosen: E, A
-__  __  E  __  __   lives: 5 XOOOOO
+__  __  __  __  __   lives: 4 XXOOOO
 Please choose a new letter >
 
 You have already chosen this letter.
 Please choose a new letter >
 
-You guessed right!
+You guessed wrong, you lost one life.
 Letters chosen: E, A, S
-__  __  E  S  S   lives: 5 XOOOOO
+__  __  __  __  __   lives: 3 XXXOOO
 Please choose a new letter >
 
 You guessed wrong, you lost one life.
 Letters chosen: E, A, S, N
-__  __  E  S  S   lives: 4 XXOOOO
+__  __  __  __  __   lives: 2 XXXXOO
 Please choose a new letter >
 
 You guessed wrong, you lost one life.
 Letters chosen: E, A, S, N, T
-__  __  E  S  S   lives: 3 XXXOOO
+__  __  __  __  __   lives: 1 XXXXXO
 Please choose a new letter >
 
 You guessed wrong, you lost one life.
 Letters chosen: E, A, S, N, T, C
-__  __  E  S  S   lives: 2 XXXXOO
-Please choose a new letter >
-
-You guessed wrong, you lost one life.
-Letters chosen: E, A, S, N, T, C, M
-__  __  E  S  S   lives: 1 XXXXXO
-Please choose a new letter >
-
-You guessed right!
-Letters chosen: E, A, S, N, T, C, M, R
-__  R  E  S  S   lives: 1 XXXXXO
-Please choose a new letter >
-
-You guessed wrong, you lost one life.
-Letters chosen: E, A, S, N, T, C, M, R, P
-__  R  E  S  S   lives: 0 XXXXXX
-You lost! The word is DRESS!
+__  __  __  __  __   lives: 0 XXXXXX
+You lost! The word is FLUID!
 Would you like to play again [Y/N]?
 Goodbye!

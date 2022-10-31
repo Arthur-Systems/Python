@@ -2,7 +2,7 @@
 # Author: Arthur Wei
 # Finish Time: 2022-10-05
 # Description: hangman.py is a program that plays a hangman game.
-# Input: The user will be prompted to enter the size of the word and the number of lives. The user will also be prompted to enter a letter.
+# Input: file 'dictionary_short.txt' The user will be prompted to enter the size of the word and the number of lives. The user will also be prompted to enter a letter.
 # Output: The program will print the hangman game. It will also print the word with the correct letters filled in. It will also print the letters that have been guessed.
 
 from random import choice, random, randint
@@ -10,7 +10,7 @@ from random import choice, random, randint
 # make a dictionary.txt in the same folder where hangman.py is located
 dictionary_file = "dictionary-short.txt"
 
-# write all your functions here
+# write all your functions herediff -wB output3 ex3.out
 
 
 def guess_letter(letters_guessed):

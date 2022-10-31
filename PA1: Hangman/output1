@@ -7,24 +7,14 @@ Letters chosen:
 __  __  __   lives: 2 OO
 Please choose a new letter >
 
-You guessed right!
+You guessed wrong, you lost one life.
 Letters chosen: A
-__  A  __   lives: 2 OO
+__  __  __   lives: 1 XO
 Please choose a new letter >
 
 You guessed wrong, you lost one life.
 Letters chosen: A, C
-__  A  __   lives: 1 XO
-Please choose a new letter >
-
-You guessed right!
-Letters chosen: A, C, B
-B  A  __   lives: 1 XO
-Please choose a new letter >
-
-You guessed right!
-Letters chosen: A, C, B, T
-B  A  T   lives: 1 XO
-Congratulations!!! You won! The word is BAT!
+__  __  __   lives: 0 XX
+You lost! The word is LID!
 Would you like to play again [Y/N]?
 Goodbye!

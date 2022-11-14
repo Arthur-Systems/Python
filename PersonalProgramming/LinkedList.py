@@ -1,8 +1,3 @@
-
-from locale import currency
-from pickletools import pylist
-
-
 class linkedList:
     def __init__(self, data):
         self.data = data

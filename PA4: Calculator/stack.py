@@ -1,36 +1,38 @@
-#
-# DO NOT FORGET TO ADD COMMENTS
-#
+# author: Arthur Wei
+# date: November 14, 2022
+# file: stack.py a python file that creates a stack class
+# input: Data to be inserted into the stack
+# output:  Data that is popped from the stack
 
 class Stack:
-    
     def __init__(self):
-        pass 
+        self.items = []
 
     def isEmpty(self):
-        pass
+        return self.items == []
 
     def push(self, item):
-        pass
+        self.items.append(item)
 
     def pop(self):
-        pass
-    
+        return self.items.pop()
+
     def peek(self):
-        pass
+        return self.items[len(self.items)-1] if not self.isEmpty() else None
 
     def size(self):
-        pass
+        return len(self.items)
 
 # a driver program for class Stack
 
+
 if __name__ == '__main__':
-    
+
     data_in = ['hello', 'how', 'are', 'you']
     s = Stack()
     for i in data_in:
         s.push(i)
-           
+
     assert s.size() == len(data_in)
     assert s.peek() == data_in[-1]
 
@@ -41,3 +43,4 @@ if __name__ == '__main__':
     assert data_out == data_in[::-1]
     assert s.size() == 0
     assert s.peek() == None
+    print("All tests passed!")

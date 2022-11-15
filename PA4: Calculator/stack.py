@@ -5,8 +5,8 @@
 # output:  Data that is popped from the stack
 
 class Stack:
-    def __init__(self):
-        self.items = []
+    def __init__(self, items=[]):
+        self.items = items
 
     def isEmpty(self):
         return self.items == []

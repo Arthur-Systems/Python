@@ -20,19 +20,24 @@ class BinaryTree:
             self.leftChild = t
 
     def insertRight(self, newNode):
-        pass
+        if self.rightChild == None:
+            self.rightChild = BinaryTree(newNode)
+        else:
+            t = BinaryTree(newNode)
+            t.rightChild = self.rightChild
+            self.rightChild = t
 
     def getRightChild(self):
         return self.rightChild
 
     def getLeftChild(self):
-        pass
+        return self.leftChild
 
     def setRootVal(self, obj):
-        pass
+        self.key = obj
 
     def getRootVal(self):
-        pass
+        return self.key
 
     def __str__(self):
         s = f"{self.key}"
@@ -48,26 +53,59 @@ class BinaryTree:
 
 class ExpTree(BinaryTree):
 
-    def make_tree(postfix):
-        pass
+    def make_tree(postfix: str) -> BinaryTree:
+        Stack1 = Stack()
+
+        for char in postfix:
+            if char.isdigit():
+                Stack1.push(ExpTree(char))
+            else:
+                temp = ExpTree(char)
+                temp.rightChild = Stack1.pop()
+                temp.leftChild = Stack1.pop()
+                Stack1.push(temp)
+                return Stack1.pop()
 
     def preorder(tree):
         s = ''
-        pass
+        if tree != None:
+            s = str(tree.getRootVal())
+            s += ExpTree.preorder(tree.getLeftChild())
+            s += ExpTree.preorder(tree.getRightChild())
         return s
 
     def inorder(tree):
         s = ''
-        pass
+        if tree != None:
+            s += ExpTree.inorder(tree.getLeftChild())
+            s += str(tree.getRootVal())
+            s += ExpTree.inorder(tree.getRightChild())
         return s
 
     def postorder(tree):
         s = ''
-        pass
+        if tree != None:
+            s += ExpTree.postorder(tree.getLeftChild())
+            s += ExpTree.postorder(tree.getRightChild())
+            s += str(tree.getRootVal())
         return s
 
     def evaluate(tree):
-        pass
+        if tree == None:
+            return 0
+        else:
+            left = ExpTree.evaluate(tree.getLeftChild())
+            right = ExpTree.evaluate(tree.getRightChild())
+            if tree.getRootVal() == '+':
+                return left + right
+            elif tree.getRootVal() == '-':
+                return left - right
+            elif tree.getRootVal() == '*':
+                return left * right
+            elif tree.getRootVal() == '/':
+                return left / right
+            elif tree.getRootVal() == '^':
+                return left ** right
 
     def __str__(self):
         return ExpTree.inorder(self)
@@ -104,7 +142,10 @@ if __name__ == '__main__':
 
     postfix = '5 2 3 * +'.split()
     tree = ExpTree.make_tree(postfix)
+    print(tree)
     assert str(tree) == '(5+(2*3))'
+
+    print('inorder:', ExpTree.inorder(tree))
     assert ExpTree.inorder(tree) == '(5+(2*3))'
     assert ExpTree.postorder(tree) == '523*+'
     assert ExpTree.preorder(tree) == '+5*23'

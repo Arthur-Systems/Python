@@ -1,6 +1,8 @@
-#
-# DO NOT FORGET TO ADD COMMENTS
-#
+# author: Arthur Wei
+# date: November 14, 2022
+# file: tree.py a python file that creates a tree class that can be used to create an expression tree
+# input: Data to be inserted into the tree
+# output: Data that is popped from the tree and the value of the expression
 
 from stack import Stack
 
@@ -53,36 +55,37 @@ class BinaryTree:
 
 class ExpTree(BinaryTree):
 
-    def make_tree(postfix: str) -> BinaryTree:
-        Stack1 = Stack()
-
-        for char in postfix:
-            if char.isdigit():
-                Stack1.push(ExpTree(char))
+    def make_tree(postfix) -> BinaryTree:
+        Stack1 = Stack()  # create a stack
+        for symb in postfix:  # for each symbol in the postfix expression
+            if symb.isdigit() or symb.replace('.', '', 1).isdigit():  # if symb is a number or a float
+                Stack1.push(ExpTree(symb))
             else:
-                temp = ExpTree(char)
+                temp = ExpTree(symb)
                 temp.rightChild = Stack1.pop()
                 temp.leftChild = Stack1.pop()
                 Stack1.push(temp)
-                return Stack1.pop()
+        return Stack1.pop()
 
-    def preorder(tree):
+    def preorder(tree):  # preorder traversal
         s = ''
         if tree != None:
-            s = str(tree.getRootVal())
+            s += str(tree.getRootVal())
             s += ExpTree.preorder(tree.getLeftChild())
             s += ExpTree.preorder(tree.getRightChild())
         return s
 
-    def inorder(tree):
+    def inorder(tree):  # inorder traversal
         s = ''
         if tree != None:
-            s += ExpTree.inorder(tree.getLeftChild())
+            if tree.leftChild != None:
+                s += '(' + ExpTree.inorder(tree.getLeftChild())
             s += str(tree.getRootVal())
-            s += ExpTree.inorder(tree.getRightChild())
+            if tree.rightChild != None:
+                s += ExpTree.inorder(tree.getRightChild()) + ')'
         return s
 
-    def postorder(tree):
+    def postorder(tree):  # postorder traversal
         s = ''
         if tree != None:
             s += ExpTree.postorder(tree.getLeftChild())
@@ -90,9 +93,9 @@ class ExpTree(BinaryTree):
             s += str(tree.getRootVal())
         return s
 
-    def evaluate(tree):
-        if tree == None:
-            return 0
+    def evaluate(tree):  # evaluate the expression tree
+        if tree == None:  # if the tree is empty return None
+            return None
         else:
             left = ExpTree.evaluate(tree.getLeftChild())
             right = ExpTree.evaluate(tree.getRightChild())
@@ -106,6 +109,9 @@ class ExpTree(BinaryTree):
                 return left / right
             elif tree.getRootVal() == '^':
                 return left ** right
+            else:
+                # if the root value is a number return it as a float else return 0
+                return float(tree.getRootVal() if tree.getRootVal() != None else 0)
 
     def __str__(self):
         return ExpTree.inorder(self)
@@ -144,11 +150,12 @@ if __name__ == '__main__':
     tree = ExpTree.make_tree(postfix)
     print(tree)
     assert str(tree) == '(5+(2*3))'
-
     print('inorder:', ExpTree.inorder(tree))
     assert ExpTree.inorder(tree) == '(5+(2*3))'
     assert ExpTree.postorder(tree) == '523*+'
+    print('postorder:', ExpTree.postorder(tree))
     assert ExpTree.preorder(tree) == '+5*23'
+    print('preorder:', ExpTree.preorder(tree))
     assert ExpTree.evaluate(tree) == 11.0
 
     postfix = '5 2 + 3 *'.split()
@@ -158,3 +165,4 @@ if __name__ == '__main__':
     assert ExpTree.postorder(tree) == '52+3*'
     assert ExpTree.preorder(tree) == '*+523'
     assert ExpTree.evaluate(tree) == 21.0
+    print("All tests passed")

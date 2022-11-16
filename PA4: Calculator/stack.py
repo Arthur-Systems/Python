@@ -4,7 +4,7 @@
 # input: Data to be inserted into the stack
 # output:  Data that is popped from the stack
 
-class Stack:
+class Stack:  # a class that creates a stack
     def __init__(self, items=[]):
         self.items = items
 
@@ -19,6 +19,7 @@ class Stack:
 
     def peek(self):
         return self.items[len(self.items)-1] if not self.isEmpty() else None
+    # returns the top of the stack without removing it but returns None if the stack is empty
 
     def size(self):
         return len(self.items)
@@ -28,6 +29,7 @@ class Stack:
 
 if __name__ == '__main__':
 
+    # a list of data to be inserted into the stack
     data_in = ['hello', 'how', 'are', 'you']
     s = Stack()
     for i in data_in:

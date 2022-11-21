@@ -1,49 +1,29 @@
+def quickSort(alist, first, last):
+    if first < last:
+        print(alist)
+        splitpoint = partition(alist, first, last)
+        quickSort(alist, first, splitpoint-1)
+        quickSort(alist, splitpoint+1, last)
 
 
-def bubbleSort(items):
-    swaps = 0
-    for i in range(len(items)-1, 0, -1):  # generate a range for the next step
-        for j in range(i):             # note that the range i is decrementing
-            if items[j] > items[j+1]:
-                items[j], items[j+1] = items[j+1], items[j]  # swap items
-                swaps += 1
-    return swaps
+def partition(alist, first, last):
+    pivotvalue = alist[first]
+    leftmark = first+1
+    rightmark = last
+    done = False
+    while not done:
+        while leftmark <= rightmark and alist[leftmark] <= pivotvalue:
+            leftmark = leftmark + 1
+        while alist[rightmark] >= pivotvalue and rightmark >= leftmark:
+            rightmark = rightmark - 1
+        if rightmark < leftmark:
+            done = True
+        else:
+            alist[leftmark], alist[rightmark] = alist[rightmark], alist[leftmark]
+    alist[first], alist[rightmark] = alist[rightmark], alist[first]
+    return rightmark
 
 
-list_ = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-
-swaps = bubbleSort(list_)
-print(list_, "swaps", swaps)
-
-
-def selectionSort(items):
-    count = 0
-    firstswap = []
-
-    for i in range(len(items)-1, 0, -1):
-        m = 0
-        for j in range(1, i+1):          # find the maximum in the range
-            if items[j] > items[m]:
-                m = j
-        count += 1
-        items[m], items[i] = items[i], items[m]
-    return firstswap, count
-
-
-list_ = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-first, count = selectionSort(list_)
-print(list_, "first swap", first, "swaps", count)
-
-
-def insertionSort(items):
-    for i in range(1, len(items)):
-        m = items[i]
-        while i > 0 and items[i-1] > m:
-            items[i] = items[i-1]
-            i -= 1
-        items[i] = m
-
-
-list_ = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-insertionSort(list_)
-print(list_)
+alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+quickSort(alist, 0, len(alist)-1)
+print(alist)

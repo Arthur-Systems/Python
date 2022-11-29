@@ -3,5 +3,5 @@
 </div>
 
 <div>
-<p> CSE30 Taken at UCSC
+<p> i have contributed literally nothing
 <div>

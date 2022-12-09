@@ -1,8 +1,14 @@
 
 def bisect(f, a, b):
     for i in f:
-
-    print(f)
+        if f(a) * f(b) < 0:
+            c = (a + b) / 2
+            if f(a) * f(c) < 0:
+                b = c
+            else:
+                a = c
+        else:
+            print('No root in this interval')
     print(f(a), f(b))
     if f(a) * f(b) >= 0:
         print("You have not assumed right a and b")
@@ -29,4 +35,4 @@ if __name__ == "__main__":
     interval = input("Enter the interval:")
     interval = interval.split()
     interval = [int(i) for i in interval]
-    print(bisect(, interval[0], interval[1]))
+    print(interval)
